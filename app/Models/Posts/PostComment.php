@@ -16,4 +16,19 @@ class PostComment extends Model
         'comment',
         'event_at',
     ];
+
+    public function post()
+    {
+        return $this->belongsTo('App\Models\Posts\Post');
+    }
+
+    public function User()
+    {
+        return $this->belongsTo('App\Models\Users\User');
+    }
+
+    public function postCommentsGet($post_id)
+    {
+        return $this->where('post_id', $post_id);
+    }
 }

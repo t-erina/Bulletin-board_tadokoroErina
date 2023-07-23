@@ -17,4 +17,19 @@ class Post extends Model
         'post',
         'event_at',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\Users\User');
+    }
+
+    public function postSubCategory()
+    {
+        return $this->belongsTo('App\Models\Posts\PostSubCategory');
+    }
+
+    public function postComments()
+    {
+        return $this->hasMany('App\Models\Posts\PostComment');
+    }
 }

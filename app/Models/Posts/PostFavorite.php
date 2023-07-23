@@ -10,6 +10,11 @@ class PostFavorite extends Model
 
     protected $fillable = [
         'user_id',
-        'post__id',
+        'post_id',
     ];
+
+    public function postFavoCounts($post_id)
+    {
+        return $this->where('post_id', $post_id)->get()->count();
+    }
 }

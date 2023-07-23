@@ -12,4 +12,14 @@ class PostCommentFavorite extends Model
         'user_id',
         'post_comment_id',
     ];
+
+    public function PostComment()
+    {
+        return $this->belongsTo('App\Models\Posts\PostComment');
+    }
+
+    public function commentFavoCounts($comment_id)
+    {
+        return $this->where('post_comment_id', $comment_id)->get()->count();
+    }
 }
