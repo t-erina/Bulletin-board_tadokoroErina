@@ -47,7 +47,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::prefix('/category')->group(function () {
         Route::get('/', 'admin\post\PostsController@category')->name('category');
         Route::post('/main-create', 'admin\post\PostMainCategoriesController@createMainCategory')->name('createMainCategory');
-        Route::get('/main-delete/{id}', 'admin\post\PostMainCategoriesController@createMainCategory')->name('deleteMainCategory');
+        Route::get('/main-delete/{id}', 'admin\post\PostMainCategoriesController@deleteMainCategory')->name('deleteMainCategory');
         Route::post('/sub-create', 'admin\post\PostSubCategoriesController@createSubCategory')->name('createSubCategory');
         Route::get('/sub-delete/{id}', 'admin\post\PostSubCategoriesController@deleteSubCategory')->name('deleteSubCategory');
     });

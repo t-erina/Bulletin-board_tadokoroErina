@@ -22,8 +22,9 @@ class PostMainCategoriesController extends Controller
         return back();
     }
 
-    public function deleteMainCategory()
+    public function deleteMainCategory($id)
     {
+        PostMainCategory::where('id', $id)->delete();
         return back();
     }
 }

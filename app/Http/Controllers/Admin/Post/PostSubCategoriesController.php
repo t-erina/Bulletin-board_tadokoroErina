@@ -21,8 +21,9 @@ class PostSubCategoriesController extends Controller
         return back();
     }
 
-    public function deleteSubCategory()
+    public function deleteSubCategory($id)
     {
+        PostSubCategory::where('id', $id)->delete();
         return back();
     }
 }

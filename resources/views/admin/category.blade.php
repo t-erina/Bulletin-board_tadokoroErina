@@ -64,7 +64,7 @@
                     <div class="main_category_list">
                         <span class="main_category_name">{{ $category->main_category }}</span>
                         @if(empty($category->postSubCategories()->first()))
-                        <a href="/category/main-delete/{{ $category->id }}" onclick="confirm('メインカテゴリーを削除してよろしいですか？')">削除</a>
+                        <a href="{{ route('deleteMainCategory', $category->id) }}" onclick="confirm('メインカテゴリーを削除してよろしいですか？')">削除</a>
                         @endif
                     </div>
                     <ul>
