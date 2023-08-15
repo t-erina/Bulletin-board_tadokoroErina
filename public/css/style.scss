@@ -7,6 +7,7 @@ $d_blue: #025373;
 // ===============
 //  common 
 // ===============
+
 body {
 
     width: 100%;
@@ -30,8 +31,21 @@ main {
 }
 
 h1 {
-    margin-right: 30px;
+    font-size: 32px;
+    margin-right: 35px;
     margin-bottom: 0;
+
+    a {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    img.logo_icon {
+        height: 40px;
+        width: auto;
+        margin-right: 10px;
+    }
 }
 
 a {
@@ -81,6 +95,7 @@ li {
 
     h2 {
         font-size: 20px;
+        font-weight: 400;
         margin-bottom: 0;
         margin-left: 15px;
     }
@@ -113,13 +128,43 @@ li {
     color: $white;
 }
 
-// ===============
-//  main contents
-// ===============
+.scrollUp_btn {
+    position: fixed;
+    right: 40px;
+    bottom: 30px;
+    height: 80px;
+    width: 80px;
+    background: rgba(242, 242, 242, .8);
+    border: solid 1px $black;
+    border-radius: 50%;
+    display: flex;
+    opacity: 0;
+    pointer-events: none;
+    transition: all .3s;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    span {
+        color: $black;
+    }
+
+    &.is_active {
+        bottom: 35px;
+        opacity: 1;
+        pointer-events: all;
+        transition: all .3s;
+    }
+}
+
 .error_message {
     color: $red;
     font-size: 14px;
 }
+
+// ===============
+//  main contents
+// ===============
 
 .main_category_card,
 .sub_category_card,
@@ -204,21 +249,9 @@ select.category_form_item {
             left: 6px;
         }
 
-        &.is_active{
-            transform: rotate(180deg);   
+        &.is_active {
+            transform: rotate(180deg);
         }
-    }
-}
-
-.categoryList_sub {
-    display: none;
-    opacity: 0;
-    transition: all .3s;
-
-    &.is_active {
-        display: flex;
-        opacity: 1;
-        transition: all .3s;
     }
 }
 
@@ -288,7 +321,19 @@ select.category_form_item {
     }
 }
 
+.category_list {
+    margin-bottom: 10px;
+}
+
+.main_category_name {
+    font-weight: 600;
+}
+
 // === post form
+.post_card {
+    margin-bottom: 20px;
+}
+
 .post_form {
     margin: 0 auto;
 }
@@ -323,7 +368,8 @@ select.post_form_item {
 // === comment
 .comment_card,
 .comment_form {
-    margin-left: 10%;
+    width: 90%;
+    margin: 0 auto;
 }
 
 .comment_form {
@@ -509,4 +555,24 @@ input.search_form_item {
     padding: 4px 12px;
     border-radius: 20px;
     color: $l_blue;
+}
+
+// ===============
+//  bullet
+// ===============
+
+.bullet {
+    position: relative;
+    padding-left: 12px;
+
+    &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 9px;
+        left: 0;
+        height: 2px;
+        width: 5px;
+        background-color: #ccc;
+    }
 }

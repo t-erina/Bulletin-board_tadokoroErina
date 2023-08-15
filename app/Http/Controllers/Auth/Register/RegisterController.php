@@ -3,18 +3,23 @@
 namespace App\Http\Controllers\Auth\Register;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreUser as RequestsStoreUser;
+use App\Http\Requests\StoreUsersRequest;
 use App\Models\Users\User;
 use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('guest');
+    }
+
     public function register()
     {
         return view('auth.register');
     }
 
-    public function storeUser(RequestsStoreUser $request)
+    public function storeUser(StoreUsersRequest $request)
     {
         $user = $request->input->get();
         dd($user);

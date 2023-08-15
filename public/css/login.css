@@ -3,7 +3,7 @@ body {
   height: 100%;
   overflow-y: scroll;
   font-family: "Poppins", "Noto Sans JP", sans-serif;
-  color: #333;
+  color: #F2F2F2;
   background-color: #333;
 }
 body p,
@@ -15,24 +15,105 @@ main {
   width: 100%;
 }
 
+ul,
+li {
+  list-style: none;
+  padding: 0;
+}
+
 .footer {
   width: 100%;
   margin: 0 auto;
-  padding: 60px 0;
   text-align: center;
   background: #333;
   color: #F2F2F2;
+  padding-bottom: 50px;
 }
 
 .wrapper_logout {
-  width: min(90%, 500px);
-  margin: 0 auto;
-  background-color: #F2F2F2;
-  padding: 30px 20px;
-  border-radius: 3px;
+  margin-top: 50vh;
+  margin-left: 50vw;
+  transform: translate(-50%, -50%);
 }
 
 .title_logout {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
+}
+.title_logout h2 {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.error_message {
+  color: #FF3765;
+  font-size: 14px;
+}
+
+.login_form,
+.register_form {
+  margin-bottom: 20px;
+}
+
+.login_form_item,
+.register_form_item {
+  display: block;
+}
+
+input.login_form_item,
+input.register_form_item {
+  width: 100%;
+  height: 36px;
+  padding: 0 5px;
+  border: solid 1px #03738C;
+  border-radius: 2px;
+}
+input.login_form_item:focus,
+input.register_form_item:focus {
+  outline: solid 2px #03738C;
+  border-radius: 2px;
+}
+
+form#login {
+  margin-bottom: 40px;
+}
+
+a {
+  color: #FF3765;
+  transition: all 0.2s;
+}
+a:hover {
+  color: #F2F2F2;
+}
+
+.btn-primary {
+  background-color: #03738C;
+  border: #03738C;
+}
+.btn-primary:hover {
+  background-color: #025373;
+  border: #025373;
+}
+
+.logo_container {
+  margin-bottom: 20px;
+}
+
+.logo_login {
+  height: 120px;
+  width: auto;
+  animation: spin 10s linear infinite;
+}
+
+h1 {
+  font-size: 64px;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
 }/*# sourceMappingURL=login.css.map */

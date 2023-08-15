@@ -8,15 +8,15 @@
         <div class="post_info">
             <div class="post_info_content">
                 <span class="post_info_item">{{ $post->user->username }}さん</span>
-                <time class="post_info_item">{{ $post->event_at }}</time>
+                <time class="post_info_item">{{ $post->event_at->format('Y年n月j日') }}</time>
             </div>
-            <span class="post_info_item">〇〇View</span>
+            <span class="post_info_item">{{ $countView->countView($post->id) }} View</span>
         </div>
         <div class="post">
             <div class="post_content">
                 <h3>{{ $post->title }}</h3>
                 @if($post->user_id == Auth::id())
-                <a href="/post/edit-form/{{ $post->id }}" class="post_content_item btn btn-primary">編集</a>
+                <a href="/post/edit-form/{{ $post->id }}" class="post_content_item"><i class="icon_margin bi bi-pencil-square"></i>編集</a>
                 @endif
             </div>
             <div class="post_body">
@@ -56,7 +56,7 @@
             </div>
             <div class="comment_info_content">
                 @if($comment->user_id == Auth::id())
-                <a href="{{ route('editCommentForm', $comment->id) }}">編集</a>
+                <a  href="{{ route('editCommentForm', $comment->id) }}"><i class="icon_margin bi bi-pencil-square"></i>編集</a>
                 @endif
             </div>
         </div>

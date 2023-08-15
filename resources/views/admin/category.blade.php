@@ -18,7 +18,7 @@
             <form action="{{ route('createMainCategory') }}" method="post">
                 @csrf
                 <div class="category_content">
-                    <label class="category_form_item">新規メインカテゴリー名</label>
+                    <label class="category_form_item bullet">新規メインカテゴリー名</label>
                     <input class="category_form_item" type="text" name="main_category">
                 </div>
                 <button class="category_form_item btn btn-primary" type="submit">登録</button>
@@ -36,7 +36,7 @@
             <form action="{{ route('createSubCategory') }}" method="post">
                 @csrf
                 <div class="category_content">
-                    <label class="category_form_item">メインカテゴリー</label>
+                    <label class="category_form_item bullet">メインカテゴリー</label>
                     <select name="main_category_id" class="category_form_item">
                         <option value="" selected>---</option>
                         @foreach($categories as $main_category)
@@ -46,7 +46,7 @@
                 </div>
 
                 <div class="category_content">
-                    <label class="category_form_item">新規サブカテゴリー名</label>
+                    <label class="category_form_item bullet">新規サブカテゴリー名</label>
                     <input class="category_form_item" type="text" name="sub_category">
                 </div>
                 <button class="category_form_item btn btn-primary" type="submit">登録</button>

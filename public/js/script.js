@@ -1,7 +1,3 @@
-console.log('Hello World!');
-
-// FAVORITE BTN　修行用…
-
 (() => {
     const $elm = document;
 
@@ -126,30 +122,50 @@ console.log('Hello World!');
         className: 'unfavo_btn',
     });
 
-})();
+    //SCROLL BTN DISPLAY    
+    const $scrollUpBtn = $elm.getElementById('js_scrollUp-btn');
 
-(() => {
-    const $elm = document;
-    const $mainCategories = $elm.getElementsByClassName('main_category_list');
-    const mainCategoriesLen = $mainCategories.length;
-
-    let index = 0;
-    while (index < mainCategoriesLen) {
-        $mainCategories[index].addEventListener('click', (e) => this.accordion(e));
-        index++;
-    }
-
-    accordion = (e) => {
-        e.preventDefault();
-
-        const $trigger = e.currentTarget;
-        const $target = $trigger.nextElementSibling;
-
-        if ($target.classList.contains('is_active') === true) {
-            $target.classList.remove('is_active');
-        } else {
-            $target.classList.add('is_active');
+    window.addEventListener('scroll', () => {
+        let scrollY = window.scrollY;
+        
+        if(scrollY >= 200){
+            $scrollUpBtn.classList.add('is_active');
+        }else if(scrollY < 200 && $scrollUpBtn.classList.contains('is_active') === true){
+            $scrollUpBtn.classList.remove('is_active');
         }
-    }
+        
+    });
+
+    //SCROLL UP EVENT
+    $scrollUpBtn.addEventListener('click', () => {
+        window.scroll({ top: 0 });
+
+    });
 
 })();
+
+// (() => {
+//     const $elm = document;
+//     const $mainCategories = $elm.getElementsByClassName('main_category_list');
+//     const mainCategoriesLen = $mainCategories.length;
+
+//     let index = 0;
+//     while (index < mainCategoriesLen) {
+//         $mainCategories[index].addEventListener('click', (e) => this.accordion(e));
+//         index++;
+//     }
+
+//     accordion = (e) => {
+//         e.preventDefault();
+
+//         const $trigger = e.currentTarget;
+//         const $target = $trigger.nextElementSibling;
+
+//         if ($target.classList.contains('is_active') === true) {
+//             $target.classList.remove('is_active');
+//         } else {
+//             $target.classList.add('is_active');
+//         }
+//     }
+
+// })();

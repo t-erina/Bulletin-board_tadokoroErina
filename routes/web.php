@@ -13,19 +13,17 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcom');
+Route::group(['middleware' => 'guest'], function () {
+    Route::get('/login', 'auth\login\LoginController@login')->name('login');
+    Route::post('/loginForm', 'auth\login\LoginController@loginForm')->name('loginForm');
+    Route::get('/register', 'auth\register\RegisterController@register')->name('register');
+    Route::get('/storeUser', 'auth\register\RegisterController@storeUser')->name('storeUser');
+    Route::get('/added', 'auth\register\RegisterAddedController@added')->name('added');
 });
-
-Route::get('/login', 'auth\login\LoginController@login')->name('login');
-Route::post('/loginForm', 'auth\login\LoginController@loginForm')->name('loginForm');
-Route::get('/logout', 'auth\login\LoginController@logout')->name('logout');
-Route::get('/register', 'auth\register\RegisterController@register')->name('register');
-Route::get('/storeUser', 'auth\register\RegisterController@storeUser')->name('storeUser');
-Route::get('/added', 'auth\login\RegisterAddedController@added')->name('added');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/top/{keyword?}', 'User\Post\PostsController@show')->name('top');
+    Route::get('/logout', 'User\Post\PostsController@logout')->name('logout');
 
     Route::prefix('/post')->group(function () {
         Route::get('/create-form', 'User\Post\PostsController@createForm')->name('createPostForm');

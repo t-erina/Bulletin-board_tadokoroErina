@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <!-- リセットCSS入れる -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,9 +15,12 @@
 
 <body>
     <main>
-        <section class="wrapper_logout">
+        <section class="wrapper_logout col-3">
             <div class="title_logout">
-                <h1>Bulletin Board</h1>
+                <div class="logo_container">
+                    <img class="logo_login" src="{{ asset('image/syuriken.svg') }}" alt="KAWARA-BAN">
+                </div>
+                <h1>KAWARA-BAN</h1>
                 <h2>@yield('title')</h2>
             </div>
 
@@ -31,7 +33,6 @@
     <footer class="footer">
         <small>PRACTICE: Bulletin Board by t-erina</small>
     </footer>
-    <!-- js入れる場合はここ -->
 </body>
 
 </html>

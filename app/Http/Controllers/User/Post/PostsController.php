@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User\Post;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePostsRequest;
+use App\Models\ActionLogs\ActionLog;
 use App\Models\Posts\Post;
 use App\Models\Posts\PostComment;
 use App\Models\Posts\PostCommentFavorite;
@@ -13,6 +14,8 @@ use App\Models\Posts\PostSubCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use function PHPUnit\Framework\isNull;
+
 class PostsController extends Controller
 {
     public function show(Request $request)
@@ -21,7 +24,9 @@ class PostsController extends Controller
         $categories = PostMainCategory::with('postSubCategories')->get();
         $postFavorites = new PostFavorite();
         $comments = new PostComment();
-        $viewCount = session('viewCount');
+        $countView = new ActionLog();
+
+        $request->session()->remove('keyword');
 
         if (!empty($request->keyword)) {
             $posts = Post::with('user', 'postSubCategory')
@@ -31,18 +36,23 @@ class PostsController extends Controller
                     $q->where('sub_category', $request->keyword);
                 })
                 ->get();
+            $request->session()->put('keyword', $request->keyword);
         } else if ($request->category_word) {
             $posts = Post::with('user', 'postSubCategory')
                 ->whereHas('postSubCategory', function ($q) use ($request) {
                     $q->where('sub_category', $request->category_word);
                 })
                 ->get();
+        } else if ($request->favorite_post) {
+            $favorites = PostFavorite::where('user_id', Auth::id())->get('post_id');
+            $posts = Post::with('user', 'postSubCategory')
+                ->whereIn('id', $favorites)->get();
         } else if ($request->auth_post) {
             $posts = Post::with('user', 'postSubCategory')
                 ->where('user_id', Auth::id())->get();
         }
 
-        return view('general.top', compact('posts', 'categories', 'postFavorites', 'comments', 'viewCount'));
+        return view('general.top', compact('posts', 'categories', 'postFavorites', 'comments', 'countView'));
     }
 
     public function createForm()
@@ -72,13 +82,20 @@ class PostsController extends Controller
 
     public function detail($post_id)
     {
+        $user_id = Auth::id();
+        $countView = new ActionLog();
+        $actionLog = ActionLog::where('post_id', $post_id)
+            ->where('user_id', $user_id)->first();
+        if (is_null($actionLog)) {
+            $countView->firstVisit($post_id, $user_id);
+        };
+
         $post = Post::where('id', $post_id)->with('user', 'postSubCategory')->first();
         $comments = PostComment::where('post_id', $post_id)->with('user')->get();
         $postFavorites = new PostFavorite();
         $commentFavorites = new PostCommentFavorite();
-        $viewCount = session('viewCount');
 
-        return view('general.detail', compact('post', 'comments', 'postFavorites', 'commentFavorites', 'viewCount'));
+        return view('general.detail', compact('post', 'comments', 'postFavorites', 'commentFavorites', 'countView'));
     }
 
     public function editform($post_id)
@@ -108,5 +125,11 @@ class PostsController extends Controller
     {
         Post::findOrFail($post_id)->delete();
         return redirect(route('top'));
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect(route('login'));
     }
 }

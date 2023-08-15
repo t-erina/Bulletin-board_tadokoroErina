@@ -18,6 +18,9 @@ class Post extends Model
         'event_at',
     ];
 
+    protected $dates = ['event_at'];
+
+
     public function user()
     {
         return $this->belongsTo('App\Models\Users\User');

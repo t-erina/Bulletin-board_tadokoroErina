@@ -19,8 +19,19 @@ main {
 }
 
 h1 {
-  margin-right: 30px;
+  font-size: 32px;
+  margin-right: 35px;
   margin-bottom: 0;
+}
+h1 a {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+h1 img.logo_icon {
+  height: 40px;
+  width: auto;
+  margin-right: 10px;
 }
 
 a {
@@ -67,6 +78,7 @@ li {
 }
 .header_content h2 {
   font-size: 20px;
+  font-weight: 400;
   margin-bottom: 0;
   margin-left: 15px;
 }
@@ -95,6 +107,33 @@ li {
   text-align: center;
   background: #333;
   color: #F2F2F2;
+}
+
+.scrollUp_btn {
+  position: fixed;
+  right: 40px;
+  bottom: 30px;
+  height: 80px;
+  width: 80px;
+  background: rgba(242, 242, 242, 0.8);
+  border: solid 1px #333;
+  border-radius: 50%;
+  display: flex;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.scrollUp_btn span {
+  color: #333;
+}
+.scrollUp_btn.is_active {
+  bottom: 35px;
+  opacity: 1;
+  pointer-events: all;
+  transition: all 0.3s;
 }
 
 .error_message {
@@ -187,17 +226,6 @@ select.category_form_item:focus {
   transform: rotate(180deg);
 }
 
-.categoryList_sub {
-  display: none;
-  opacity: 0;
-  transition: all 0.3s;
-}
-.categoryList_sub.is_active {
-  display: flex;
-  opacity: 1;
-  transition: all 0.3s;
-}
-
 .sub_category_list {
   border: solid 1px #03738C;
   border-top: none;
@@ -263,6 +291,18 @@ select.category_form_item:focus {
   margin-bottom: 0;
 }
 
+.category_list {
+  margin-bottom: 10px;
+}
+
+.main_category_name {
+  font-weight: 600;
+}
+
+.post_card {
+  margin-bottom: 20px;
+}
+
 .post_form {
   margin: 0 auto;
 }
@@ -297,7 +337,8 @@ select.post_form_item {
 
 .comment_card,
 .comment_form {
-  margin-left: 10%;
+  width: 90%;
+  margin: 0 auto;
 }
 
 .comment_form {
@@ -458,4 +499,19 @@ input.search_form_item:focus {
   padding: 4px 12px;
   border-radius: 20px;
   color: #03738C;
+}
+
+.bullet {
+  position: relative;
+  padding-left: 12px;
+}
+.bullet::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 9px;
+  left: 0;
+  height: 2px;
+  width: 5px;
+  background-color: #ccc;
 }/*# sourceMappingURL=style.css.map */

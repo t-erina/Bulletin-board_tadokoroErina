@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('guest')->except('logout');
+    }
+
     public function login()
     {
         return view('auth.login');
@@ -22,13 +27,7 @@ class LoginController extends Controller
         if (Auth::attempt($data)) {
             return redirect(route('top'));
         } else {
-            return back();
+            return redirect(route('login'));
         }
-    }
-
-    public function logout()
-    {
-        //ログアウトの処理かく
-        return redirect('');
     }
 }
