@@ -183,6 +183,7 @@ li {
 .main_category_card,
 .sub_category_card {
     margin-bottom: 20px;
+    border-radius: 3px;
 }
 
 .category_content {
@@ -220,6 +221,7 @@ select.category_form_item {
 .main_category_list {
     border: solid 1px $l_blue;
     background-color: #03738C;
+    border-radius: 2px 2px 0 0;
 
     a {
         color: $white;
@@ -229,37 +231,16 @@ select.category_form_item {
         color: $white;
         font-weight: 600;
     }
-
-    .arrow_wrapper {
-        position: relative;
-        background: $white;
-        height: 20px;
-        width: 20px;
-        border-radius: 50%;
-
-        .arrow {
-            position: absolute;
-            display: block;
-            height: 8px;
-            width: 8px;
-            border-top: solid 2px $l_blue;
-            border-right: solid 2px $l_blue;
-            transform: rotate(135deg);
-            top: 5px;
-            left: 6px;
-        }
-
-        &.is_active {
-            transform: rotate(180deg);
-        }
-    }
 }
 
 .sub_category_list {
     border: solid 1px $l_blue;
     border-top: none;
-}
 
+    &:last-child{
+        border-radius: 0 0 2px 2px;
+    }
+}
 
 
 // === top
@@ -332,6 +313,7 @@ select.category_form_item {
 // === post form
 .post_card {
     margin-bottom: 20px;
+    border-radius: 3px;
 }
 
 .post_form {
@@ -370,6 +352,10 @@ select.post_form_item {
 .comment_form {
     width: 90%;
     margin: 0 auto;
+}
+
+.comment_info {
+    margin-bottom: 10px;
 }
 
 .comment_form {

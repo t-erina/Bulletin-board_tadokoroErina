@@ -159,6 +159,7 @@ li {
 .main_category_card,
 .sub_category_card {
   margin-bottom: 20px;
+  border-radius: 3px;
 }
 
 .category_content {
@@ -196,6 +197,7 @@ select.category_form_item:focus {
 .main_category_list {
   border: solid 1px #03738C;
   background-color: #03738C;
+  border-radius: 2px 2px 0 0;
 }
 .main_category_list a {
   color: #F2F2F2;
@@ -204,31 +206,13 @@ select.category_form_item:focus {
   color: #F2F2F2;
   font-weight: 600;
 }
-.main_category_list .arrow_wrapper {
-  position: relative;
-  background: #F2F2F2;
-  height: 20px;
-  width: 20px;
-  border-radius: 50%;
-}
-.main_category_list .arrow_wrapper .arrow {
-  position: absolute;
-  display: block;
-  height: 8px;
-  width: 8px;
-  border-top: solid 2px #03738C;
-  border-right: solid 2px #03738C;
-  transform: rotate(135deg);
-  top: 5px;
-  left: 6px;
-}
-.main_category_list .arrow_wrapper.is_active {
-  transform: rotate(180deg);
-}
 
 .sub_category_list {
   border: solid 1px #03738C;
   border-top: none;
+}
+.sub_category_list:last-child {
+  border-radius: 0 0 2px 2px;
 }
 
 .post_info {
@@ -301,6 +285,7 @@ select.category_form_item:focus {
 
 .post_card {
   margin-bottom: 20px;
+  border-radius: 3px;
 }
 
 .post_form {
@@ -339,6 +324,10 @@ select.post_form_item {
 .comment_form {
   width: 90%;
   margin: 0 auto;
+}
+
+.comment_info {
+  margin-bottom: 10px;
 }
 
 .comment_form {

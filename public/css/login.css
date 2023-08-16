@@ -86,6 +86,14 @@ a:hover {
   color: #F2F2F2;
 }
 
+.added_content {
+  margin: 0 auto;
+  text-align: center;
+}
+.added_content .added_item {
+  margin-bottom: 20px;
+}
+
 .btn-primary {
   background-color: #03738C;
   border: #03738C;
