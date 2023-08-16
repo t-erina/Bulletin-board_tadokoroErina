@@ -64,7 +64,7 @@
                     <div class="main_category_list">
                         <span class="main_category_name">{{ $category->main_category }}</span>
                         @if(empty($category->postSubCategories()->first()))
-                        <a href="{{ route('deleteMainCategory', $category->id) }}" onclick="confirm('メインカテゴリーを削除してよろしいですか？')">削除</a>
+                        <a href="{{ route('deleteMainCategory', $category->id) }}" onclick="return confirm('メインカテゴリーを削除してよろしいですか？')">削除</a>
                         @endif
                     </div>
                     <ul>
@@ -72,7 +72,7 @@
                         <li class="sub_category_list">
                             <span class="sub_category_name">{{ $sub_category->sub_category }}<span class="count_num">({{ $sub_category->posts()->count() }})</span></span>
                             @if(empty($sub_category->posts()->first()))
-                            <a href="/category/sub-delete/{{ $sub_category->id }}" onclick="confirm('サブカテゴリーを削除してよろしいですか？')">削除</a>
+                            <a href="/category/sub-delete/{{ $sub_category->id }}" onclick="return confirm('サブカテゴリーを削除してよろしいですか？')">削除</a>
                             @endif
                         </li>
                         @endforeach
