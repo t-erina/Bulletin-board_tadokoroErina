@@ -33,7 +33,7 @@
     </main>
     <footer class="footer">
         <small>PRACTICE: Bulletin Board by t-erina</small>
-        <div id="js_scrollUp-btn" class="scrollUp_btn">
+        <div id="js_scrollUpBtn" class="scrollUp_btn">
             <span>TOP</span>
         </div>
     </footer>

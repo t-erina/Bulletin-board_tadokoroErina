@@ -123,14 +123,14 @@
     });
 
     //SCROLL BTN DISPLAY    
-    const $scrollUpBtn = $elm.getElementById('js_scrollUp-btn');
+    const $scrollUpBtn = $elm.getElementById('js_scrollUpBtn');
 
     window.addEventListener('scroll', () => {
         let scrollY = window.scrollY;
         
-        if(scrollY >= 200){
+        if(scrollY >= 150){
             $scrollUpBtn.classList.add('is_active');
-        }else if(scrollY < 200 && $scrollUpBtn.classList.contains('is_active') === true){
+        }else if(scrollY < 150 && $scrollUpBtn.classList.contains('is_active') === true){
             $scrollUpBtn.classList.remove('is_active');
         }
         
