@@ -17,7 +17,7 @@ Route::group(['middleware' => 'guest'], function () {
     Route::get('/login', 'auth\login\LoginController@login')->name('login');
     Route::post('/loginForm', 'auth\login\LoginController@loginForm')->name('loginForm');
     Route::get('/register', 'auth\register\RegisterController@register')->name('register');
-    Route::get('/storeUser', 'auth\register\RegisterController@storeUser')->name('storeUser');
+    Route::post('/storeUser', 'auth\register\RegisterController@storeUser')->name('storeUser');
     Route::get('/added', 'auth\register\RegisterAddedController@added')->name('added');
 });
 
@@ -40,6 +40,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/create', 'User\Post\PostCommentsController@createComment')->name('createComment');
         Route::get('/edit-form/{comment_id}', 'User\Post\PostCommentsController@editForm')->name('editCommentForm');
         Route::post('/edit', 'User\Post\PostCommentsController@editComment')->name('editComment');
+        Route::get('delete/{comment_id}', 'User\Post\PostCommentsController@deleteComment')->name('deleteComment');
         Route::post('/favorite/{post_id}', 'User\Post\PostCommentFavoritesController@favorite')->name('commentFavorite');
         Route::post('/unFavorite/{post_id}', 'User\Post\PostCommentFavoritesController@unFavorite')->name('commentUnfavorite');
     });
