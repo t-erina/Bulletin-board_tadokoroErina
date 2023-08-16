@@ -5,7 +5,7 @@
 @section('content')
 
 <div>
-    <form action="/storeUser">
+    <form action="/storeUser" method="post">
         @csrf
         <div class="register_form">
             @if ($errors->has('username'))

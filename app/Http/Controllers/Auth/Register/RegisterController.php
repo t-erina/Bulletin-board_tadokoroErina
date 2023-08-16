@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUsersRequest;
 use App\Models\Users\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
@@ -21,16 +22,19 @@ class RegisterController extends Controller
 
     public function storeUser(StoreUsersRequest $request)
     {
-        $user = $request->input->get();
-        dd($user);
+        $username = $request->input('username');
+        $email = $request->input('email');
+        $password = Hash::make($request->input('password'));
 
         User::create([
-            'username' => $user->username,
-            'email' => $user->email,
-            'password' => $user->password,
-            'admin_role' => '1',
+            'username' => $username,
+            'email' => $email,
+            'password' => $password,
+            'admin_role' => '10',
         ]);
 
-        return route('added');
+        session()->put('newUserName', $username);
+
+        return view('auth.added');
     }
 }
