@@ -143,29 +143,3 @@
     });
 
 })();
-
-// (() => {
-//     const $elm = document;
-//     const $mainCategories = $elm.getElementsByClassName('main_category_list');
-//     const mainCategoriesLen = $mainCategories.length;
-
-//     let index = 0;
-//     while (index < mainCategoriesLen) {
-//         $mainCategories[index].addEventListener('click', (e) => this.accordion(e));
-//         index++;
-//     }
-
-//     accordion = (e) => {
-//         e.preventDefault();
-
-//         const $trigger = e.currentTarget;
-//         const $target = $trigger.nextElementSibling;
-
-//         if ($target.classList.contains('is_active') === true) {
-//             $target.classList.remove('is_active');
-//         } else {
-//             $target.classList.add('is_active');
-//         }
-//     }
-
-// })();
