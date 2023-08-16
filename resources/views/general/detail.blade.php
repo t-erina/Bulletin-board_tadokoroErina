@@ -20,7 +20,8 @@
                 @endif
             </div>
             <div class="post_body">
-                <p>{{ $post->post }}</p>
+                <!-- 改行を反映する -->
+                <p>{!! nl2br(htmlspecialchars($post->post)) !!}</p>
             </div>
         </div>
         <div class="post_action">
@@ -56,14 +57,14 @@
             </div>
             <div class="comment_info_content">
                 @if($comment->user_id == Auth::id())
-                <a  href="{{ route('editCommentForm', $comment->id) }}"><i class="icon_margin bi bi-pencil-square"></i>編集</a>
+                <a href="{{ route('editCommentForm', $comment->id) }}"><i class="icon_margin bi bi-pencil-square"></i>編集</a>
                 @endif
             </div>
         </div>
 
         <div class="comment">
             <div class="comment_content">
-                <p>{{ $comment->comment }}</p>
+                <p>{!! nl2br(htmlspecialchars($comment->comment)) !!}</p>
             </div>
             <div class="comment_action">
                 <div class="comment_action_content">

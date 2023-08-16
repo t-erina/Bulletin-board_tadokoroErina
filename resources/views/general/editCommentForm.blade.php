@@ -24,9 +24,10 @@
         </form>
         <div class="edit_form_btn">
             <button class="btn btn-primary" type="submit" form="editPostForm">更新</button>
-            <button class="btn btn-danger" type="submit" form="deletePostForm" onclick="confirm('投稿を削除してよろしいですか？')">削除</button>
+            <button class="btn btn-danger" type="submit" form="deleteCommentForm" onclick="return confirm('コメントを削除してよろしいですか？')">削除</button>
         </div>
-        <form action="{{ route('deletePost', '$post->id') }}" method="get" id="deletePostForm">@csrf</form>
+        <form action="{{ route('deleteComment', '$post->id') }}" method="get" id="deleteCommentForm">@csrf</form>
+        <input type="hidden" name="comment_id" value="{{ $comment->id }}" form="deleteCommentForm">
     </div>
 </div>
 

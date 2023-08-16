@@ -59,9 +59,9 @@
         </form>
         <div class="edit_form_btn">
             <button class="btn btn-primary" type="submit" form="editPostForm">更新</button>
-            <button class="btn btn-danger" type="submit" form="deletePostForm" onclick="confirm('投稿を削除してよろしいですか？')">削除</button>
+            <button class="btn btn-danger" type="submit" form="deletePostForm" onclick="return confirm('投稿を削除してよろしいですか？')">削除</button>
         </div>
-        <form action="{{ route('deletePost', '$post->id') }}" method="get" id="deletePostForm">@csrf</form>
+        <form action="{{ route('deletePost', $post->id) }}" method="get" id="deletePostForm">@csrf</form>
     </div>
 </div>
 
