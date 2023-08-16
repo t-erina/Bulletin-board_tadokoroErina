@@ -46,8 +46,12 @@ class PostCommentsController extends Controller
         return redirect(route('postDetail', $post_id));
     }
 
-    public function deleteComment()
+    public function deleteComment(Request $request)
     {
-        return back();
+        $comment_id = $request->input('comment_id');
+
+        PostComment::where('id', $comment_id)->delete();
+
+        return redirect(route('top'));
     }
 }

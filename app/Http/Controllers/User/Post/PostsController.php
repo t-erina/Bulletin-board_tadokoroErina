@@ -118,7 +118,7 @@ class PostsController extends Controller
             'post' => $post,
         ]);
 
-        return redirect(route('postDetail', ['post_id' => $post_id]));
+        return redirect(route('postDetail', $post_id));
     }
 
     public function deletePost($post_id)
