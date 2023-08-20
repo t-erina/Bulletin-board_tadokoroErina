@@ -13,6 +13,7 @@ body span {
 
 main {
   width: 100%;
+  position: relative;
 }
 
 ul,
@@ -21,18 +22,10 @@ li {
   padding: 0;
 }
 
-.footer {
-  width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  background: #333;
-  color: #F2F2F2;
-  padding-bottom: 50px;
-}
-
 .wrapper_logout {
-  margin-top: 50vh;
-  margin-left: 50vw;
+  position: absolute;
+  top: 50vh;
+  left: 50vw;
   transform: translate(-50%, -50%);
 }
 
@@ -43,6 +36,16 @@ li {
 .title_logout h2 {
   font-size: 20px;
   font-weight: 400;
+}
+
+.footer {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  background: #333;
+  color: #F2F2F2;
+  padding-top: max(100vh - 50px, 690px);
+  padding-bottom: 30px;
 }
 
 .error_message {
@@ -104,7 +107,10 @@ a:hover {
 }
 
 .logo_container {
+  margin: 0 auto;
   margin-bottom: 20px;
+  height: 120px;
+  width: 120px;
 }
 
 .logo_login {
@@ -114,7 +120,7 @@ a:hover {
 }
 
 h1 {
-  font-size: 64px;
+  font-size: 48px;
 }
 
 @keyframes spin {

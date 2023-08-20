@@ -24,6 +24,7 @@ body {
 
 main {
     width: 100%;
+    position: relative;
 }
 
 ul,
@@ -32,19 +33,10 @@ li {
     padding: 0;
 }
 
-
-.footer {
-    width: 100%;
-    margin: 0 auto;
-    text-align: center;
-    background: $black;
-    color: $white;
-    padding-bottom: 50px;
-}
-
 .wrapper_logout {
-    margin-top: 50vh;
-    margin-left: 50vw;
+    position: absolute;
+    top: 50vh;
+    left: 50vw;
     transform: translate(-50%, -50%);
 }
 
@@ -56,6 +48,16 @@ li {
         font-size: 20px;
         font-weight: 400;
     }
+}
+
+.footer {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    background: $black;
+    color: $white;
+    padding-top: max(calc(100vh - 50px), 690px);
+    padding-bottom: 30px;
 }
 
 .error_message {
@@ -94,20 +96,20 @@ form#login {
     margin-bottom: 40px;
 }
 
-a{
+a {
     color: $red;
     transition: all .2s;
 
-    &:hover{
+    &:hover {
         color: $white;
     }
 }
 
-.added_content{
+.added_content {
     margin: 0 auto;
     text-align: center;
 
-    .added_item{
+    .added_item {
         margin-bottom: 20px;
     }
 }
@@ -130,7 +132,10 @@ a{
 // ===============
 
 .logo_container {
+    margin: 0 auto;
     margin-bottom: 20px;
+    height: 120px;
+    width: 120px;
 }
 
 .logo_login {
@@ -139,8 +144,8 @@ a{
     animation: spin 10s linear infinite;
 }
 
-h1{
-    font-size: 64px;
+h1 {
+    font-size: 48px;
 }
 
 @keyframes spin {
