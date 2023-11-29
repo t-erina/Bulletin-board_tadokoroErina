@@ -94,8 +94,9 @@ class PostsController extends Controller
         $comments = PostComment::where('post_id', $post_id)->with('user')->get();
         $postFavorites = new PostFavorite();
         $commentFavorites = new PostCommentFavorite();
+        $categories = PostMainCategory::with('PostSubCategories')->get();
 
-        return view('general.detail', compact('post', 'comments', 'postFavorites', 'commentFavorites', 'countView'));
+        return view('general.detail', compact('post', 'comments', 'postFavorites', 'commentFavorites', 'countView', 'categories'));
     }
 
     public function editform($post_id)

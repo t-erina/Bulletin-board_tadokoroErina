@@ -5,7 +5,7 @@ $l_blue: #03738C;
 $d_blue: #025373;
 
 // ===============
-//  common 
+//  common
 // ===============
 
 body {
@@ -13,6 +13,7 @@ body {
     width: 100%;
     height: 100%;
     overflow-y: scroll;
+    overflow-x: hidden;
     font-family: 'Poppins', 'Noto Sans JP', sans-serif;
     color: #333;
     background-color: $black;
@@ -30,24 +31,6 @@ main {
     background-color: $white;
 }
 
-h1 {
-    font-size: 32px;
-    margin-right: 35px;
-    margin-bottom: 0;
-
-    a {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-    }
-
-    img.logo_icon {
-        height: 40px;
-        width: auto;
-        margin-right: 10px;
-    }
-}
-
 a {
     color: $l_blue;
     transition: all .2s;
@@ -63,6 +46,9 @@ li {
     padding: 0;
 }
 
+// ====================
+//  header
+// ====================
 .header {
     height: 72px;
     width: 100%;
@@ -107,9 +93,37 @@ li {
         border-top: solid 2px $white;
         border-right: solid 2px $white;
         transform: rotate(45deg);
+        margin-left: 30px;
     }
 }
 
+.menu-btn {
+    display: none;
+}
+
+h1 {
+    margin-bottom: 0;
+
+    a {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    img.logo_icon {
+        height: 40px;
+        width: auto;
+        margin-right: 10px;
+    }
+
+    .logo_text {
+        font-size: 32px;
+    }
+}
+
+// ====================
+//  layout
+// ====================
 .container {
     margin-top: 72px;
     padding: 40px 0 80px;
@@ -119,6 +133,9 @@ li {
     justify-content: space-between;
 }
 
+// ====================
+//  footer
+// ====================
 .footer {
     width: 100%;
     margin: 0 auto;
@@ -163,11 +180,12 @@ li {
 }
 
 // ===============
-//  main contents
+//  contents
 // ===============
 
 .main_category_card,
 .sub_category_card,
+.edit-category_card,
 .post_card,
 .comment_card {
     padding: 20px;
@@ -181,13 +199,10 @@ li {
 
 // === category
 .main_category_card,
-.sub_category_card {
+.sub_category_card,
+.edit-category_card {
     margin-bottom: 20px;
     border-radius: 3px;
-}
-
-.category_content {
-    margin-bottom: 20px;
 }
 
 .category_form_item,
@@ -210,38 +225,44 @@ select.category_form_item {
     }
 }
 
-.main_category_list,
 .sub_category_list {
-    padding: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    position: relative;
+
+    &::before {
+        content: "";
+        display: block;
+        height: 10px;
+        width: 10px;
+        border-bottom: solid 2px #ccc;
+        border-left: solid 2px #ccc;
+        position: absolute;
+        top: 2px;
+        left: 5px;
+    }
+}
+
+.edit-category_list {
+    margin-bottom: 20px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
 }
 
-.main_category_list {
-    border: solid 1px $l_blue;
-    background-color: #03738C;
-    border-radius: 2px 2px 0 0;
-
-    a {
-        color: $white;
-    }
-
-    .main_category_name {
-        color: $white;
-        font-weight: 600;
-    }
+.edit-category_list_inner {
+    width: calc((100% - 60px) / 2);
+    margin-bottom: 20px;
 }
 
-.sub_category_list {
-    border: solid 1px $l_blue;
-    border-top: none;
-
-    &:last-child{
-        border-radius: 0 0 2px 2px;
-    }
+.category-delet-btn {
+    display: inline-block;
+    margin-left: 10px;
 }
-
 
 // === top
 .post_info {
@@ -297,7 +318,6 @@ select.category_form_item {
     margin-bottom: 10px;
 
     h3 {
-        font-size: 32px;
         margin-bottom: 0;
     }
 }
@@ -351,7 +371,7 @@ select.post_form_item {
 .comment_card,
 .comment_form {
     width: 90%;
-    margin: 0 auto;
+    margin-left: auto;
 }
 
 .comment_info {
@@ -455,6 +475,10 @@ textarea.comment_form_item {
 // ===============
 .sidebar_content {
     margin-bottom: 40px;
+
+    &.s_logout-btn {
+        display: none;
+    }
 
     .sidebar_content_title {
         font-size: 24px;
@@ -560,5 +584,108 @@ input.search_form_item {
         height: 2px;
         width: 5px;
         background-color: #ccc;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+
+        p,
+        span {
+            font-size: 14px;
+        }
+    }
+
+    .header {
+        padding: 0;
+    }
+
+    h1 {
+        padding-left: 24px;
+    }
+
+    .header_content {
+        .logo_text {
+            display: none;
+        }
+
+        .deco_arrow {
+            margin-left: 10px;
+        }
+
+        &.h_logout-btn {
+            display: none;
+        }
+    }
+
+    .menu-btn {
+        display: block;
+        height: 72px;
+        width: 72px;
+        line-height: 72px;
+        color: #fff;
+        font-size: 30px;
+        background: #333;
+        border: none;
+        transition: all .2s;
+
+        &:hover {
+            background: $red;
+        }
+    }
+
+    .row {
+        display: block;
+        width: 100%;
+        margin: 0 auto;
+        position: relative;
+
+        .container_main {
+            width: 100%;
+        }
+
+        .container_side {
+            height: 100vh;
+            width: 100%;
+            margin-top: 72px;
+            padding-top: 40px;
+            background: $white;
+            position: fixed;
+            top: 0;
+            right: -100vw;
+            pointer-events: none;
+            z-index: -1;
+            transition: all .5s ease-in-out;
+
+            &.is_active {
+                right: 0;
+                pointer-events: all;
+                z-index: 9;
+            }
+        }
+    }
+
+    .sidebar_content {
+        &.s_logout-btn {
+            display: block;
+        }
+    }
+
+    .main_category_card,
+    .sub_category_card,
+    .edit-category_card,
+    .post_card,
+    .comment_card {
+        h3 {
+            font-size: 24px;
+        }
+    }
+
+    .edit-category_list {
+        display: block;
+    }
+
+    .edit-category_list_inner {
+        width: 100%;
     }
 }

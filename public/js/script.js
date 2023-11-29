@@ -122,18 +122,18 @@
         className: 'unfavo_btn',
     });
 
-    //SCROLL BTN DISPLAY    
+    //SCROLL BTN DISPLAY
     const $scrollUpBtn = $elm.getElementById('js_scrollUpBtn');
 
     window.addEventListener('scroll', () => {
         let scrollY = window.scrollY;
-        
-        if(scrollY >= 150){
+
+        if (scrollY >= 150) {
             $scrollUpBtn.classList.add('is_active');
-        }else if(scrollY < 150 && $scrollUpBtn.classList.contains('is_active') === true){
+        } else if (scrollY < 150 && $scrollUpBtn.classList.contains('is_active') === true) {
             $scrollUpBtn.classList.remove('is_active');
         }
-        
+
     });
 
     //SCROLL UP EVENT
@@ -141,5 +141,20 @@
         window.scroll({ top: 0 });
 
     });
+
+    //SP SHOW SIDE BAR
+    const $menuBtn = $elm.getElementById('js_menuBtn');
+    const $sideBar = $elm.getElementById('js_sideBar');
+
+    const showSideBar = (e) => {
+        e.preventDefault();
+        if ($sideBar.classList.contains('is_active')) {
+            $sideBar.classList.remove('is_active');
+        } else {
+            $sideBar.classList.add('is_active');
+        }
+    }
+
+    $menuBtn.addEventListener('click', (e) => showSideBar(e));
 
 })();

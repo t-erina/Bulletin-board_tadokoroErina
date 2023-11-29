@@ -5,7 +5,7 @@ $l_blue: #03738C;
 $d_blue: #025373;
 
 // ===============
-//  common 
+//  common
 // ===============
 body {
 
@@ -33,6 +33,15 @@ li {
     padding: 0;
 }
 
+.error_message {
+    color: $red;
+    font-size: 14px;
+}
+
+// ===============
+//  layout
+// ===============
+
 .wrapper_logout {
     position: absolute;
     top: 50vh;
@@ -50,6 +59,14 @@ li {
     }
 }
 
+.container {
+    width: min(100%, 540px);
+}
+
+// ===============
+//  footer
+// ===============
+
 .footer {
     width: 100%;
     margin: 0 auto;
@@ -58,11 +75,6 @@ li {
     color: $white;
     padding-top: max(calc(100vh - 50px), 690px);
     padding-bottom: 30px;
-}
-
-.error_message {
-    color: $red;
-    font-size: 14px;
 }
 
 // ===============
@@ -155,5 +167,24 @@ h1 {
 
     to {
         transform: rotate(-360deg);
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+
+        p,
+        span {
+            font-size: 14px;
+        }
+    }
+
+    h1 {
+        font-size: 36px;
+    }
+
+    .row {
+        width: 100%;
+        margin: 0 auto;
     }
 }

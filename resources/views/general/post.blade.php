@@ -3,9 +3,8 @@
 @section('title', '新規投稿作成')
 
 @section('content')
-
-<div class="row">
-    <form class="post_form col-6" action="{{ route('createPost') }}" method="post">
+<div class="container_main col-8">
+    <form class="post_form" action="{{ route('createPost') }}" method="post">
         @csrf
         <div class="post_form_content">
             @if ($errors->has('sub_category_id'))
@@ -57,5 +56,4 @@
         </div>
     </form>
 </div>
-
 @endsection

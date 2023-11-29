@@ -3,7 +3,7 @@
 @section('title', '投稿詳細')
 
 @section('content')
-<div class="container_main">
+<div class="container_main col-8">
     <div class="post_card">
         <div class="post_info">
             <div class="post_info_content">

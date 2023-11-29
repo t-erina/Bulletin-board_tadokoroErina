@@ -15,7 +15,7 @@
 
 <body>
     <main>
-        <section class="wrapper_logout col-4">
+        <section class="wrapper_logout col-8">
             <div class="title_logout">
                 <div class="logo_container">
                     <img class="logo_login" src="{{ asset('image/syuriken.svg') }}" alt="KAWARA-BAN">

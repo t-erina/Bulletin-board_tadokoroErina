@@ -7,6 +7,7 @@ use App\Http\Requests\StoreCommentsRequest;
 use App\Models\Posts\PostComment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Posts\PostMainCategory;
 
 class PostCommentsController extends Controller
 {
@@ -30,7 +31,8 @@ class PostCommentsController extends Controller
     public function editForm($comment_id)
     {
         $comment = PostComment::where('id', $comment_id)->first();
-        return view('general.editCommentForm', compact('comment'));
+        $categories = PostMainCategory::with('PostSubCategories')->get();
+        return view('general.editCommentForm', compact('comment', 'categories'));
     }
 
     public function editComment(StoreCommentsRequest $request)
